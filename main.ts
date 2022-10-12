@@ -30,7 +30,7 @@ radio.onReceivedNumber(function (recievedNumber:1) {
         // visual count until laser is passed
         loops.everyInterval(1000, () =>{
             SecondsTimer += 1;
-            basic.showNumber(SecondsTimer);
+           // basic.showNumber(SecondsTimer);
         })
     }
     basic.showNumber(SecondsTimer);
