@@ -24,27 +24,26 @@ input.onButtonPressed(Button.B, function () {
     basic.showString("go!");
 })
 radio.onReceivedNumber(function (recievedNumber: 1) {
+    const start= input.runningTime();
     // don't need to raise a specific event b/c recieving a number is an event?
     const start_time = control.eventTimestamp();
     const default_light_level_reciever = input.lightLevel();
     let elasped_seconds = 0;
     basic.showString("go!");
-    while(input.lightLevel()>= default_light_level_reciever){
+    while(input.lightLevel() >= 0.8*default_light_level_reciever){
         continue;
     }
-    //if (input.lightLevel() < default_light_level_reciever) {
-        // MicrobitEvent = evt(2, recievedNumber);
-        let end_time = control.eventTimestamp();
-        elasped_seconds = (end_time - start_time) / 1000;
-        basic.showNumber(elasped_seconds);
-        basic.showString("done!");
-        radio.sendValue("time", elasped_seconds);
-        // control.reset()
-        // current way to get out of if statement
-    //}
-    
+ 
+    let end_time = input.runningTime();
 
-    basic.showString("if statement")
+    elasped_seconds = (end_time - start_time)/1000;
+
+    basic.showNumber(elasped_seconds);
+    basic.showString("done!");
+    radio.sendValue("time", elasped_seconds);
+ 
+
+    
     
 })
 
